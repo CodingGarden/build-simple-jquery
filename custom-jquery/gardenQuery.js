@@ -3,8 +3,7 @@
 const makeNiceCollection = collection => {
   collection.each = (callback) => {
     collection.forEach((element, i) => {
-      const boundFn = callback.bind(element);
-      boundFn(i, element);
+      callback.call(element, i, element);
     });
   };
   collection.on = (eventName, handler) => {
